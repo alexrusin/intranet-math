@@ -1,6 +1,6 @@
 <template>
-	<div class="wrapper">
-		<p class="is-size-3 mt-2 has-text-weight-bold">Click on numbers {{lowerNumber}} through {{upperNumber}}</p>
+	<div class="problem-wrapper">
+		<p class="is-size-3 mt-2 has-text-weight-bold">Touch the numbers {{lowerNumber}} through {{upperNumber}}</p>
 			<div class="ball-container">
 			<div v-for="(number, index) in numberOfBalls" :key="index">
 					<div class="ball"><p v-text="number" class="is-size-4 has-text-weight-bold"></p></div>
@@ -80,13 +80,8 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.problem-wrapper {
 	background: black url(~/../images/8e601a62-7502-447c-a97b-a44e6cab87ae.png) center / cover;
-	height: 85vh;
-	display: flex;
-    flex-direction: column;
-    text-align: -webkit-center;
-    justify-content: space-between;
     padding-bottom: 5em;
 }
 

@@ -1,5 +1,5 @@
 <template>
-	<div class="wrapper">
+	<div class="problem-wrapper">
 		<p class="is-size-3 mt-2 has-text-weight-bold">How Many Balls?</p>
 		<div class="columns is-multiline is-mobile mobile-margin balls">
 			<div class="column" v-for="ball in numberOfBalls">
@@ -28,7 +28,7 @@ export default {
 	    next();
 	   
 	},
-	
+
   data() {
     return {
       numberOfBalls: 6,
@@ -51,13 +51,8 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.problem-wrapper {
 	background: black url(~/../images/2a182d02-d321-47b3-8e3c-92d0090401c8.png) center / cover;
-	height: 85vh;
-	display: flex;
-    flex-direction: column;
-    text-align: -webkit-center;
-    justify-content: space-between;
     padding-bottom: 10em;
 }
 

@@ -2214,7 +2214,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.wrapper[data-v-9361d26a] {\r\n\tbackground: black url(/../images/2a182d02-d321-47b3-8e3c-92d0090401c8.png) center / cover;\r\n\theight: 85vh;\r\n\tdisplay: flex;\r\n    flex-direction: column;\r\n    text-align: -webkit-center;\r\n    justify-content: space-between;\r\n    padding-bottom: 10em;\n}\n.ball[data-v-9361d26a] {\r\n\tbackground: url(/../images/ball.png) center / cover;\r\n\twidth: 80px;\r\n\theight: 80px;\n}\n.mobile-margin[data-v-9361d26a] {\r\n\t\tmargin-top: 5em;\n}\n.answers[data-v-9361d26a] {\r\n\twidth: 50%;\n}\n.balls[data-v-9361d26a] {\r\n    width: 90%;\n}\n@media only screen and (min-width: 1025px) {\n.ball[data-v-9361d26a] {\r\n\t\t\r\n\t\twidth: 140px;\r\n\t\theight: 140px;\n}\n.columns[data-v-9361d26a] {\r\n\t\twidth: 75%;\n}\n.answers[data-v-9361d26a] {\r\n\t\twidth: 35%;\n}\n}\n.answer[data-v-9361d26a] {\r\n\twidth: 60px;\r\n\theight: 60px;\r\n\tborder: 1px black solid;\r\n\tbackground: rgba(255,252,75,0.65);\r\n\tcursor: pointer;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.problem-wrapper[data-v-9361d26a] {\r\n\tbackground: black url(/../images/2a182d02-d321-47b3-8e3c-92d0090401c8.png) center / cover;\r\n    padding-bottom: 10em;\n}\n.ball[data-v-9361d26a] {\r\n\tbackground: url(/../images/ball.png) center / cover;\r\n\twidth: 80px;\r\n\theight: 80px;\n}\n.mobile-margin[data-v-9361d26a] {\r\n\t\tmargin-top: 5em;\n}\n.answers[data-v-9361d26a] {\r\n\twidth: 50%;\n}\n.balls[data-v-9361d26a] {\r\n    width: 90%;\n}\n@media only screen and (min-width: 1025px) {\n.ball[data-v-9361d26a] {\r\n\t\t\r\n\t\twidth: 140px;\r\n\t\theight: 140px;\n}\n.columns[data-v-9361d26a] {\r\n\t\twidth: 75%;\n}\n.answers[data-v-9361d26a] {\r\n\t\twidth: 35%;\n}\n}\n.answer[data-v-9361d26a] {\r\n\twidth: 60px;\r\n\theight: 60px;\r\n\tborder: 1px black solid;\r\n\tbackground: rgba(255,252,75,0.65);\r\n\tcursor: pointer;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -2233,7 +2233,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.wrapper[data-v-365b0c19] {\r\n\tbackground: black url(/../images/8e601a62-7502-447c-a97b-a44e6cab87ae.png) center / cover;\r\n\theight: 85vh;\r\n\tdisplay: flex;\r\n    flex-direction: column;\r\n    text-align: -webkit-center;\r\n    justify-content: space-between;\r\n    padding-bottom: 5em;\n}\n.ball-container[data-v-365b0c19] {\r\n\tdisplay: flex;\r\n    margin-right: auto;\r\n    margin-left: auto;\r\n    max-width: 95%;\r\n    flex-wrap: wrap;\n}\n.ball[data-v-365b0c19] {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\r\n\ttext-align: center;\r\n\tbackground: rgb(241, 251, 164);\r\n\tborder: 1px solid black;\r\n\tborder-radius: 50%;\r\n\twidth: 40px;\r\n\theight: 40px;\r\n\tmargin-right: 1.5em;\r\n\tmargin-top: 5px;\n}\n.answers[data-v-365b0c19] {\r\n\twidth: 50%;\n}\n@media only screen and (min-width: 1025px) {\n.ball p[data-v-365b0c19] {\r\n\t\tline-height: 55px;\n}\n.ball[data-v-365b0c19] {\r\n\t\t\r\n\t\twidth: 60px;\r\n\t\theight: 60px;\n}\n.columns[data-v-365b0c19] {\r\n\t\twidth: 75%;\n}\n.answers[data-v-365b0c19] {\r\n\t\twidth: 35%;\n}\n}\n.answer[data-v-365b0c19] {\r\n\twidth: 60px;\r\n\theight: 60px;\r\n\tborder: 1px black solid;\r\n\tbackground: rgba(255,252,75,0.65);\r\n\tcursor: pointer;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.problem-wrapper[data-v-365b0c19] {\r\n\tbackground: black url(/../images/8e601a62-7502-447c-a97b-a44e6cab87ae.png) center / cover;\r\n    padding-bottom: 5em;\n}\n.ball-container[data-v-365b0c19] {\r\n\tdisplay: flex;\r\n    margin-right: auto;\r\n    margin-left: auto;\r\n    max-width: 95%;\r\n    flex-wrap: wrap;\n}\n.ball[data-v-365b0c19] {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\r\n\ttext-align: center;\r\n\tbackground: rgb(241, 251, 164);\r\n\tborder: 1px solid black;\r\n\tborder-radius: 50%;\r\n\twidth: 40px;\r\n\theight: 40px;\r\n\tmargin-right: 1.5em;\r\n\tmargin-top: 5px;\n}\n.answers[data-v-365b0c19] {\r\n\twidth: 50%;\n}\n@media only screen and (min-width: 1025px) {\n.ball p[data-v-365b0c19] {\r\n\t\tline-height: 55px;\n}\n.ball[data-v-365b0c19] {\r\n\t\t\r\n\t\twidth: 60px;\r\n\t\theight: 60px;\n}\n.columns[data-v-365b0c19] {\r\n\t\twidth: 75%;\n}\n.answers[data-v-365b0c19] {\r\n\t\twidth: 35%;\n}\n}\n.answer[data-v-365b0c19] {\r\n\twidth: 60px;\r\n\theight: 60px;\r\n\tborder: 1px black solid;\r\n\tbackground: rgba(255,252,75,0.65);\r\n\tcursor: pointer;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -20985,7 +20985,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper" }, [
+  return _c("div", { staticClass: "problem-wrapper" }, [
     _c("p", { staticClass: "is-size-3 mt-2 has-text-weight-bold" }, [
       _vm._v("How Many Balls?")
     ]),
@@ -21050,10 +21050,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper" }, [
+  return _c("div", { staticClass: "problem-wrapper" }, [
     _c("p", { staticClass: "is-size-3 mt-2 has-text-weight-bold" }, [
       _vm._v(
-        "Click on numbers " +
+        "Touch the numbers " +
           _vm._s(_vm.lowerNumber) +
           " through " +
           _vm._s(_vm.upperNumber)

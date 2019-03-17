@@ -33,3 +33,10 @@ transform: translateX(-50%);
 display: initial;
 }
 
+.problem-wrapper {
+	height: 85vh;
+	display: flex;
+    flex-direction: column;
+    text-align: -webkit-center;
+    justify-content: space-between;
+}

@@ -16,6 +16,7 @@ Vue.use(VueRouter)
 
 import App from './views/App'
 import CheckAnswer from './views/CheckAnswer'
+import StartKindergarten from './views/StartKindergarten'
 import NotFound from './views/NotFound'
 import HowManyBalls from './views/lessons/kindergarten/HowManyBalls'
 import NumbersRange from './views/lessons/kindergarten/NumbersRange'
@@ -23,6 +24,12 @@ import NumbersRange from './views/lessons/kindergarten/NumbersRange'
 const router = new VueRouter({
     mode: 'history',
     routes: [
+        {
+            path: '/',
+            name: 'start-kindergarten',
+            component: StartKindergarten
+        },
+
         {
             path: '/lessons/kindergarten/how-many-balls',
             name: 'k-problem-1',
@@ -46,26 +53,9 @@ const router = new VueRouter({
     ],
 });
 
-Vue.prototype.store = new Vuex.Store({
-  state: {
-    lessons: {
-      'kindergarten': [
-        'k-problem-1',
-        'k-problem-2'
-      ]
-    },
-    grade: '',
-    showMenuHeader: true
-  },
-  mutations: {
-    setGrade (state, level) {
-      state.grade = level;
-    },
-    setMenuHeader(state, showHeader) {
-      state.showMenuHeader = showHeader;
-    }
-  }
-});
+import storeData from './store';
+
+Vue.prototype.store = new Vuex.Store(storeData);
 
 const app = new Vue({
     el: '#app',

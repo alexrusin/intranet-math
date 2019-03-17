@@ -28,11 +28,7 @@ export default {
 	    next();
 	   
 	},
-
-	created() {
-		this.store.commit('setGrade', 'kindergarten');
-		this.store.commit('setMenuHeader', false);
-	},
+	
   data() {
     return {
       numberOfBalls: 6,

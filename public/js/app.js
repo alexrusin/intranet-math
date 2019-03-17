@@ -1865,6 +1865,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     this.result = this.$route.params.result === 'correct' ? true : false;
@@ -1875,11 +1884,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     lessons: function lessons() {
       return this.store.state.lessons[this.grade];
+    },
+    lessonData: function lessonData() {
+      return this.store.state.lessonData;
+    },
+    startOverPathName: function startOverPathName() {
+      return this.store.state.lessons.startOverPathName;
     }
   },
   data: function data() {
     return {
-      result: false
+      result: false,
+      endOfLessonMessage: null
     };
   },
   methods: {
@@ -1887,8 +1903,94 @@ __webpack_require__.r(__webpack_exports__);
       return Math.floor(Math.random() * Math.floor(max));
     },
     nextQuestion: function nextQuestion() {
+      if (this.result) {
+        this.store.commit('incrementCorrect');
+      } else {
+        this.store.commit('incrementIncorrect');
+      }
+
+      if (this.lessonData.currentProblem === this.lessonData.numberOfProblems) {
+        this.endOfLessonMessage = 'You correctly answered ' + this.lessonData.correct + ' out of ' + this.lessonData.numberOfProblems + ' problems';
+      } else {
+        this.store.commit('incrementCurrentProblem');
+        var nextLesson = this.getRandomInt(2);
+        this.$router.push({
+          name: this.lessons[nextLesson]
+        });
+      }
+    },
+    startOver: function startOver() {
+      this.store.commit('setMenuHeader', true);
+      this.$router.push({
+        name: this.startOverPathName
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/StartKindergarten.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/StartKindergarten.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    grade: function grade() {
+      return this.store.state.grade;
+    },
+    lessons: function lessons() {
+      return this.store.state.lessons[this.grade];
+    }
+  },
+  methods: {
+    startLesson: function startLesson(numberOfProblems) {
+      this.store.commit('setGrade', 'kindergarten');
+      this.store.commit('setMenuHeader', false);
+      this.store.commit('setStartOverPathName', 'start-kindergarten');
+      var lessonData = {
+        numberOfProblems: numberOfProblems,
+        correct: 0,
+        incorrect: 0,
+        currentProblem: 1
+      };
+      this.store.commit('initializeLessonData', lessonData);
+      this.nextQuestion();
+    },
+    getRandomInt: function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    },
+    nextQuestion: function nextQuestion() {
       var nextLesson = this.getRandomInt(2);
-      console.log(this.lessons[nextLesson]);
       this.$router.push({
         name: this.lessons[nextLesson]
       });
@@ -1934,10 +2036,6 @@ __webpack_require__.r(__webpack_exports__);
     this.numberOfBalls = 0;
     this.generateBalls();
     next();
-  },
-  created: function created() {
-    this.store.commit('setGrade', 'kindergarten');
-    this.store.commit('setMenuHeader', false);
   },
   data: function data() {
     return {
@@ -2045,17 +2143,17 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     generateRange: function generateRange() {
-      var lowerIndex = Math.floor(Math.random() * 9);
-      var upperIndex = Math.floor(Math.random() * 9);
+      var lowerIndex = Math.floor(Math.random() * 5);
+      var upperIndex = Math.floor(Math.random() * 5);
       var lowerRange = Array.apply(null, {
-        length: 10
+        length: 6
       }).map(function (value, index) {
-        return index + 1;
+        return index + 2;
       });
       var upperRange = Array.apply(null, {
-        length: 10
+        length: 6
       }).map(function (value, index) {
-        return index + 11;
+        return index + 8;
       });
       this.lowerNumber = lowerRange[lowerIndex];
       this.upperNumber = upperRange[upperIndex];
@@ -2079,6 +2177,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.correct[data-v-1e266797], .incorrect[data-v-1e266797] {\r\n\ttext-aligin: center;\n}\n.wrapper[data-v-1e266797] {\r\n\tflex-direction: column;\r\n    text-align: -webkit-center;\r\n    justify-content: space-between;\n}\n.result-message[data-v-1e266797] {\r\n\tmargin-top: 2em;\r\n\tmargin-bottom: 2em;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.start-message[data-v-6e89098e] {\r\n\ttext-aligin: center;\n}\n.wrapper[data-v-6e89098e] {\r\n\tflex-direction: column;\r\n    text-align: -webkit-center;\r\n    justify-content: space-between;\n}\n.result-message[data-v-6e89098e] {\r\n\tmargin-top: 2em;\r\n\tmargin-bottom: 2em;\n}\n.answers[data-v-6e89098e] {\r\n\twidth: 30%;\n}\n.answer[data-v-6e89098e] {\r\n\twidth: 60px;\r\n\theight: 60px;\r\n\tborder: 1px black solid;\r\n\tbackground: rgba(255,252,75,0.65);\r\n\tcursor: pointer;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -2116,7 +2233,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.wrapper[data-v-365b0c19] {\r\n\tbackground: black url(/../images/8e601a62-7502-447c-a97b-a44e6cab87ae.png) center / cover;\r\n\theight: 85vh;\r\n\tdisplay: flex;\r\n    flex-direction: column;\r\n    text-align: -webkit-center;\r\n    justify-content: space-between;\r\n    padding-bottom: 3em;\n}\n.ball-container[data-v-365b0c19] {\r\n\tdisplay: flex;\r\n    margin-right: auto;\r\n    margin-left: auto;\r\n    max-width: 95%;\r\n    flex-wrap: wrap;\n}\n.ball[data-v-365b0c19] {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\r\n\ttext-align: center;\r\n\tbackground: rgb(241, 251, 164);\r\n\tborder: 1px solid black;\r\n\tborder-radius: 50%;\r\n\twidth: 40px;\r\n\theight: 40px;\r\n\tmargin-right: 1.5em;\r\n\tmargin-top: 5px;\n}\n.answers[data-v-365b0c19] {\r\n\twidth: 50%;\n}\n@media only screen and (min-width: 1025px) {\n.ball p[data-v-365b0c19] {\r\n\t\tline-height: 55px;\n}\n.ball[data-v-365b0c19] {\r\n\t\t\r\n\t\twidth: 60px;\r\n\t\theight: 60px;\n}\n.columns[data-v-365b0c19] {\r\n\t\twidth: 75%;\n}\n.answers[data-v-365b0c19] {\r\n\t\twidth: 35%;\n}\n}\n.answer[data-v-365b0c19] {\r\n\twidth: 60px;\r\n\theight: 60px;\r\n\tborder: 1px black solid;\r\n\tbackground: rgba(255,252,75,0.65);\r\n\tcursor: pointer;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.wrapper[data-v-365b0c19] {\r\n\tbackground: black url(/../images/8e601a62-7502-447c-a97b-a44e6cab87ae.png) center / cover;\r\n\theight: 85vh;\r\n\tdisplay: flex;\r\n    flex-direction: column;\r\n    text-align: -webkit-center;\r\n    justify-content: space-between;\r\n    padding-bottom: 5em;\n}\n.ball-container[data-v-365b0c19] {\r\n\tdisplay: flex;\r\n    margin-right: auto;\r\n    margin-left: auto;\r\n    max-width: 95%;\r\n    flex-wrap: wrap;\n}\n.ball[data-v-365b0c19] {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\r\n\ttext-align: center;\r\n\tbackground: rgb(241, 251, 164);\r\n\tborder: 1px solid black;\r\n\tborder-radius: 50%;\r\n\twidth: 40px;\r\n\theight: 40px;\r\n\tmargin-right: 1.5em;\r\n\tmargin-top: 5px;\n}\n.answers[data-v-365b0c19] {\r\n\twidth: 50%;\n}\n@media only screen and (min-width: 1025px) {\n.ball p[data-v-365b0c19] {\r\n\t\tline-height: 55px;\n}\n.ball[data-v-365b0c19] {\r\n\t\t\r\n\t\twidth: 60px;\r\n\t\theight: 60px;\n}\n.columns[data-v-365b0c19] {\r\n\t\twidth: 75%;\n}\n.answers[data-v-365b0c19] {\r\n\t\twidth: 35%;\n}\n}\n.answer[data-v-365b0c19] {\r\n\twidth: 60px;\r\n\theight: 60px;\r\n\tborder: 1px black solid;\r\n\tbackground: rgba(255,252,75,0.65);\r\n\tcursor: pointer;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -19776,6 +19893,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/lessons/kindergarten/HowManyBalls.vue?vue&type=style&index=0&id=9361d26a&scoped=true&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/lessons/kindergarten/HowManyBalls.vue?vue&type=style&index=0&id=9361d26a&scoped=true&lang=css& ***!
@@ -20464,13 +20611,17 @@ var render = function() {
             "li",
             { attrs: { "data-target": "pane-1", id: "1" } },
             [
-              _c("router-link", { attrs: { to: { name: "k-problem-1" } } }, [
-                _c("span", { staticClass: "icon is-small" }, [
-                  _c("i", { staticClass: "fas fa-chalkboard-teacher" })
-                ]),
-                _vm._v(" "),
-                _c("span", [_vm._v("Kindergarten")])
-              ])
+              _c(
+                "router-link",
+                { attrs: { to: { name: "start-kindergarten" } } },
+                [
+                  _c("span", { staticClass: "icon is-small" }, [
+                    _c("i", { staticClass: "fas fa-chalkboard-teacher" })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Kindergarten")])
+                ]
+              )
             ],
             1
           ),
@@ -20606,40 +20757,80 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrapper" }, [
-    _vm.result
-      ? _c("div", { staticClass: "correct" }, [
-          _c("i", {
-            staticClass: "far fa-check-circle is-size-1 has-text-primary"
+    _vm.endOfLessonMessage
+      ? _c("div", [
+          _c("p", {
+            staticClass: "is-size-4 result-message",
+            domProps: { textContent: _vm._s(_vm.endOfLessonMessage) }
           }),
           _vm._v(" "),
-          _c(
-            "p",
-            { staticClass: "is-size-4 has-text-primary result-message" },
-            [_vm._v("The answer is correct")]
-          )
+          _vm._m(0)
         ])
-      : _c("div", { staticClass: "incorrect" }, [
-          _c("i", {
-            staticClass: "far fa-times-circle is-size-1 has-text-danger"
-          }),
-          _vm._v(" "),
-          _c("p", { staticClass: "is-size-4 has-text-danger result-message" }, [
-            _vm._v("Sorry. The answer is incorrect")
-          ])
+      : _c("div", [
+          _vm.result
+            ? _c("div", { staticClass: "correct" }, [
+                _c("i", {
+                  staticClass: "far fa-check-circle is-size-1 has-text-primary"
+                }),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  { staticClass: "is-size-4 has-text-primary result-message" },
+                  [_vm._v("The answer is correct")]
+                )
+              ])
+            : _c("div", { staticClass: "incorrect" }, [
+                _c("i", {
+                  staticClass: "far fa-times-circle is-size-1 has-text-danger"
+                }),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  { staticClass: "is-size-4 has-text-danger result-message" },
+                  [_vm._v("Sorry. The answer is incorrect")]
+                )
+              ])
         ]),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "button is-primary is-large",
-        attrs: { type: "button" },
-        on: { click: _vm.nextQuestion }
-      },
-      [_vm._v("Next Question")]
-    )
+    !_vm.endOfLessonMessage
+      ? _c(
+          "button",
+          {
+            staticClass: "button is-primary is-large",
+            attrs: { type: "button" },
+            on: { click: _vm.nextQuestion }
+          },
+          [_vm._v("Next")]
+        )
+      : _c(
+          "button",
+          {
+            staticClass: "button is-primary is-large",
+            attrs: { type: "button" },
+            on: { click: _vm.startOver }
+          },
+          [_vm._v("Start Over")]
+        )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "is-size-4 result-message" }, [
+      _vm._v("For more problems and grade levels please visit "),
+      _c(
+        "a",
+        {
+          staticClass: "has-text-info",
+          attrs: { href: "http://internetmath.net", target: "_blank" }
+        },
+        [_vm._v("InternetMath.net")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -20673,6 +20864,102 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", [
         _vm._v("Woops! Looks like the page you requested cannot be found.")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/StartKindergarten.vue?vue&type=template&id=6e89098e&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/StartKindergarten.vue?vue&type=template&id=6e89098e&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "wrapper" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "columns is-multiline is-mobile answers" }, [
+      _c("div", { staticClass: "column" }, [
+        _c(
+          "div",
+          {
+            staticClass: "answer center",
+            on: {
+              click: function($event) {
+                return _vm.startLesson(5)
+              }
+            }
+          },
+          [
+            _c("p", { staticClass: "is-size-4 has-text-weight-bold" }, [
+              _vm._v("5")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c(
+          "div",
+          {
+            staticClass: "answer center",
+            on: {
+              click: function($event) {
+                return _vm.startLesson(10)
+              }
+            }
+          },
+          [
+            _c("p", { staticClass: "is-size-4 has-text-weight-bold" }, [
+              _vm._v("10")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c(
+          "div",
+          {
+            staticClass: "answer center",
+            on: {
+              click: function($event) {
+                return _vm.startLesson(20)
+              }
+            }
+          },
+          [
+            _c("p", { staticClass: "is-size-4 has-text-weight-bold" }, [
+              _vm._v("20")
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "start-message" }, [
+      _c("p", { staticClass: "is-size-4  result-message" }, [
+        _vm._v("To begin, please select number of problems")
       ])
     ])
   }
@@ -20801,7 +21088,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "columns is-multiline is-mobile answers" },
-      _vm._l(20, function(n, index) {
+      _vm._l(15, function(n, index) {
         return _c("div", { staticClass: "column" }, [
           _c(
             "div",
@@ -36601,9 +36888,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
 /* harmony import */ var _views_CheckAnswer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/CheckAnswer */ "./resources/js/views/CheckAnswer.vue");
-/* harmony import */ var _views_NotFound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/NotFound */ "./resources/js/views/NotFound.vue");
-/* harmony import */ var _views_lessons_kindergarten_HowManyBalls__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/lessons/kindergarten/HowManyBalls */ "./resources/js/views/lessons/kindergarten/HowManyBalls.vue");
-/* harmony import */ var _views_lessons_kindergarten_NumbersRange__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/lessons/kindergarten/NumbersRange */ "./resources/js/views/lessons/kindergarten/NumbersRange.vue");
+/* harmony import */ var _views_StartKindergarten__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/StartKindergarten */ "./resources/js/views/StartKindergarten.vue");
+/* harmony import */ var _views_NotFound__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/NotFound */ "./resources/js/views/NotFound.vue");
+/* harmony import */ var _views_lessons_kindergarten_HowManyBalls__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/lessons/kindergarten/HowManyBalls */ "./resources/js/views/lessons/kindergarten/HowManyBalls.vue");
+/* harmony import */ var _views_lessons_kindergarten_NumbersRange__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/lessons/kindergarten/NumbersRange */ "./resources/js/views/lessons/kindergarten/NumbersRange.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -36621,16 +36910,21 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
+
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
   mode: 'history',
   routes: [{
+    path: '/',
+    name: 'start-kindergarten',
+    component: _views_StartKindergarten__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }, {
     path: '/lessons/kindergarten/how-many-balls',
     name: 'k-problem-1',
-    component: _views_lessons_kindergarten_HowManyBalls__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _views_lessons_kindergarten_HowManyBalls__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
     path: '/lessons/kindergarten/numbers-range',
     name: 'k-problem-2',
-    component: _views_lessons_kindergarten_NumbersRange__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _views_lessons_kindergarten_NumbersRange__WEBPACK_IMPORTED_MODULE_8__["default"]
   }, {
     path: '/lessons/check-answer/:result',
     name: 'check-answer',
@@ -36638,29 +36932,14 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
   }, {
     path: '/404',
     name: '404',
-    component: _views_NotFound__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _views_NotFound__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: '*',
     redirect: '/404'
   }]
 });
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
-  state: {
-    lessons: {
-      'kindergarten': ['k-problem-1', 'k-problem-2']
-    },
-    grade: '',
-    showMenuHeader: true
-  },
-  mutations: {
-    setGrade: function setGrade(state, level) {
-      state.grade = level;
-    },
-    setMenuHeader: function setMenuHeader(state, showHeader) {
-      state.showMenuHeader = showHeader;
-    }
-  }
-});
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_9__["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   components: {
@@ -36749,6 +37028,57 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/store.js":
+/*!*******************************!*\
+  !*** ./resources/js/store.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: {
+    lessons: {
+      'startOverPathName': '/',
+      'kindergarten': ['k-problem-1', 'k-problem-2']
+    },
+    grade: '',
+    showMenuHeader: true,
+    lessonData: {
+      numberOfProblems: 0,
+      correct: 0,
+      incorrect: 0,
+      currentProblem: 0
+    }
+  },
+  mutations: {
+    setGrade: function setGrade(state, level) {
+      state.grade = level;
+    },
+    setStartOverPathName: function setStartOverPathName(state, pathName) {
+      state.lessons.startOverPathName = pathName;
+    },
+    setMenuHeader: function setMenuHeader(state, showHeader) {
+      state.showMenuHeader = showHeader;
+    },
+    initializeLessonData: function initializeLessonData(state, data) {
+      state.lessonData = data;
+    },
+    incrementCorrect: function incrementCorrect(state) {
+      state.lessonData.correct++;
+    },
+    incrementIncorrect: function incrementIncorrect(state) {
+      state.lessonData.incorrect++;
+    },
+    incrementCurrentProblem: function incrementCurrentProblem(state) {
+      state.lessonData.currentProblem++;
+    }
+  }
+});
 
 /***/ }),
 
@@ -36956,6 +37286,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NotFound_vue_vue_type_template_id_5dcdfd0e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NotFound_vue_vue_type_template_id_5dcdfd0e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/StartKindergarten.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/views/StartKindergarten.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _StartKindergarten_vue_vue_type_template_id_6e89098e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StartKindergarten.vue?vue&type=template&id=6e89098e&scoped=true& */ "./resources/js/views/StartKindergarten.vue?vue&type=template&id=6e89098e&scoped=true&");
+/* harmony import */ var _StartKindergarten_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StartKindergarten.vue?vue&type=script&lang=js& */ "./resources/js/views/StartKindergarten.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _StartKindergarten_vue_vue_type_style_index_0_id_6e89098e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css& */ "./resources/js/views/StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _StartKindergarten_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _StartKindergarten_vue_vue_type_template_id_6e89098e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _StartKindergarten_vue_vue_type_template_id_6e89098e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "6e89098e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/StartKindergarten.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/StartKindergarten.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/views/StartKindergarten.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./StartKindergarten.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/StartKindergarten.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/views/StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css& ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_style_index_0_id_6e89098e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/StartKindergarten.vue?vue&type=style&index=0&id=6e89098e&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_style_index_0_id_6e89098e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_style_index_0_id_6e89098e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_style_index_0_id_6e89098e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_style_index_0_id_6e89098e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_style_index_0_id_6e89098e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/views/StartKindergarten.vue?vue&type=template&id=6e89098e&scoped=true&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/views/StartKindergarten.vue?vue&type=template&id=6e89098e&scoped=true& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_template_id_6e89098e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./StartKindergarten.vue?vue&type=template&id=6e89098e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/StartKindergarten.vue?vue&type=template&id=6e89098e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_template_id_6e89098e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StartKindergarten_vue_vue_type_template_id_6e89098e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

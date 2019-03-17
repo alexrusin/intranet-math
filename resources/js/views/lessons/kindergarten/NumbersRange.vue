@@ -11,7 +11,7 @@
 			<i class="fas fa-exclamation-triangle" style="color:red; font-size:2em;"></i>
 		</div>
 		<div class="columns is-multiline is-mobile answers">
-			<div class="column" v-for="(n, index) in 20">
+			<div class="column" v-for="(n, index) in 15">
 				<div class="answer center" @click="checkAnswer(index + 1)"><p class="is-size-4 has-text-weight-bold">{{index+1}}</p></div>
 			</div>
 		</div>
@@ -58,15 +58,15 @@ export default {
   		}
   	},
   	generateRange() {
-  		let lowerIndex = Math.floor(Math.random() * 9);
-  		let upperIndex = Math.floor(Math.random() * 9);
+  		let lowerIndex = Math.floor(Math.random() * 5);
+  		let upperIndex = Math.floor(Math.random() * 5);
 
-  		let lowerRange = Array.apply(null, {length: 10}).map(function(value, index){
-		  return index + 1;
+  		let lowerRange = Array.apply(null, {length: 6}).map(function(value, index){
+		  return index + 2;
 		});
 
-  		let upperRange = Array.apply(null, {length: 10}).map(function(value, index){
-		  return index + 11;
+  		let upperRange = Array.apply(null, {length: 6}).map(function(value, index){
+		  return index + 8;
 		});
 
 		this.lowerNumber = lowerRange[lowerIndex];
@@ -87,7 +87,7 @@ export default {
     flex-direction: column;
     text-align: -webkit-center;
     justify-content: space-between;
-    padding-bottom: 3em;
+    padding-bottom: 5em;
 }
 
 .ball-container {

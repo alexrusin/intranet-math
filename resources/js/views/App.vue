@@ -13,7 +13,7 @@
 		<div class="tabs is-boxed is-centered main-menu" id="nav">
             <ul>
                 <li data-target="pane-1" id="1">
-                	<router-link :to="{ name: 'k-problem-1' }">
+                	<router-link :to="{ name: 'start-kindergarten' }">
 	                   
 	                        <span class="icon is-small"><i class="fas fa-chalkboard-teacher"></i></span>
 	                        <span>Kindergarten</span>

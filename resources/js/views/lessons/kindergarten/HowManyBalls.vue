@@ -52,7 +52,7 @@ export default {
 
 <style scoped>
 .problem-wrapper {
-	background: black url(~/../images/2a182d02-d321-47b3-8e3c-92d0090401c8.png) center / cover;
+	background: black url(~/../images/2a182d02-d321-47b3-8e3c-92d0090401c8.jpg) center / cover;
     padding-bottom: 10em;
 }
 

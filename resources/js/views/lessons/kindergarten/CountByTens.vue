@@ -71,7 +71,7 @@ export default {
 </script>
 <style scoped>
 .problem-wrapper {
-	background: black url(~/../images/96f41eb6-e9fb-4692-831b-3df9fa157de9.png) center / cover;
+	background: black url(~/../images/96f41eb6-e9fb-4692-831b-3df9fa157de9.jpg) center / cover;
     padding-bottom: 15em;
 }
 
@@ -81,7 +81,7 @@ export default {
 	padding: 2.5em;
     width: 90%;
     height: 20em;
-    background: black url(~/../images/green_box.png) center / cover;
+    background: black url(~/../images/green_box.jpg) center / cover;
 }
 
 .ball {

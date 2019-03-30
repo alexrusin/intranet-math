@@ -31,7 +31,7 @@ export default {
 
   data() {
     return {
-      numberOfBalls: 6,
+      numberOfBalls: 1,
       }
   },
   methods: {

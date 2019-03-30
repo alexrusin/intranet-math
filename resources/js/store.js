@@ -3,8 +3,10 @@ export default {
     lessons: {
       'startOverPathName': '/',
       'kindergarten': [
-        'k-problem-1',
-        'k-problem-2'
+        'how-many-balls',
+        'numbers-range',
+        'how-many-balls',
+        'count-by-tens',
       ]
     },
     grade: '',

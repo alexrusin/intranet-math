@@ -15,52 +15,18 @@ Vue.use(Vuex)
 Vue.use(VueRouter)
 
 import App from './views/App'
-import CheckAnswer from './views/CheckAnswer'
-import StartKindergarten from './views/StartKindergarten'
-import NotFound from './views/NotFound'
-import HowManyBalls from './views/lessons/kindergarten/HowManyBalls'
-import NumbersRange from './views/lessons/kindergarten/NumbersRange'
 
-const router = new VueRouter({
-    mode: 'history',
-    routes: [
-        {
-            path: '/',
-            name: 'start-kindergarten',
-            component: StartKindergarten
-        },
-
-        {
-            path: '/lessons/kindergarten/how-many-balls',
-            name: 'k-problem-1',
-            component: HowManyBalls
-        },
-
-        {
-            path: '/lessons/kindergarten/numbers-range',
-            name: 'k-problem-2',
-            component: NumbersRange
-        },
-
-        {
-            path: '/lessons/check-answer/:result',
-            name: 'check-answer',
-            component: CheckAnswer
-        },
-
-		{ path: '/404', name: '404', component: NotFound },
-		{ path: '*', redirect: '/404' },
-    ],
-});
+import routes from './routes'
+const router = new VueRouter(routes);
 
 import storeData from './store';
-
-Vue.prototype.store = new Vuex.Store(storeData);
+const store = new Vuex.Store(storeData);
 
 const app = new Vue({
     el: '#app',
     components: { App },
-    router
+    router,
+    store
 });
 
 // The following code is based off a toggle menu by @Bradcomp

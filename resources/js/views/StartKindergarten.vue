@@ -23,40 +23,37 @@
 	</div>
 </template>
 <script>
+import {getRandomInt} from '../helpers'
 export default {
 	computed: {
 		grade () {
-	      return this.store.state.grade
+	      return this.$store.state.grade
 	    },
 
 		lessons() {
-	    	return this.store.state.lessons[this.grade];
+	    	return this.$store.state.lessons[this.grade];
 	    },
 	},
 	
 	methods: {
 		startLesson(numberOfProblems) {
-			this.store.commit('setGrade', 'kindergarten');
-			this.store.commit('setMenuHeader', false);
-			this.store.commit('setStartOverPathName', 'start-kindergarten');
+			this.$store.commit('setGrade', 'kindergarten');
+			this.$store.commit('setMenuHeader', false);
+			this.$store.commit('setStartOverPathName', 'start-kindergarten');
 
 			let lessonData = {
 				numberOfProblems: numberOfProblems,
 			    correct: 0,
 			    incorrect: 0,
 			    currentProblem: 1
-			}
+			};
 
-			this.store.commit('initializeLessonData', lessonData);
+			this.$store.commit('initializeLessonData', lessonData);
 			this.nextQuestion();
 		},
 
-		getRandomInt(max) {
-		  return Math.floor(Math.random() * Math.floor(max));
-		},
-
 		nextQuestion() {
-			let nextLesson = this.getRandomInt(2);
+			let nextLesson = getRandomInt(this.lessons.length);
 			this.$router.push({name: this.lessons[nextLesson]});
 		}
 	}

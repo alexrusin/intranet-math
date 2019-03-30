@@ -23,6 +23,7 @@
 	</div>
 </template>
 <script>
+import {getRandomInt} from '../helpers'
 export default {
 	created() {
 		this.result = this.$route.params.result === 'correct' ? true : false;
@@ -30,19 +31,19 @@ export default {
 
 	computed: {
     	grade () {
-	      return this.store.state.grade
+	      return this.$store.state.grade;
 	    },
 
 	    lessons() {
-	    	return this.store.state.lessons[this.grade];
+	    	return this.$store.state.lessons[this.grade];
 	    },
 
 	    lessonData() {
-	    	return this.store.state.lessonData;
+	    	return this.$store.state.lessonData;
 	    },
 
 	    startOverPathName() {
-	    	return this.store.state.lessons.startOverPathName;
+	    	return this.$store.state.lessons.startOverPathName;
 	    }
 	  },
 
@@ -54,15 +55,12 @@ export default {
 	},
 
 	methods: {
-		getRandomInt(max) {
-		  return Math.floor(Math.random() * Math.floor(max));
-		},
 
 		nextQuestion() {
 			if (this.result) {
-				this.store.commit('incrementCorrect');
+				this.$store.commit('incrementCorrect');
 			} else {
-				this.store.commit('incrementIncorrect');
+				this.$store.commit('incrementIncorrect');
 			}
 
 			if (this.lessonData.currentProblem === this.lessonData.numberOfProblems) {
@@ -70,15 +68,15 @@ export default {
 			this.endOfLessonMessage = 'You correctly answered ' + this.lessonData.correct + ' out of ' + this.lessonData.numberOfProblems + ' problems';
 
 			} else {
-				this.store.commit('incrementCurrentProblem');
-				let nextLesson = this.getRandomInt(2);
+				this.$store.commit('incrementCurrentProblem');
+				let nextLesson = getRandomInt(this.lessons.length);
 				this.$router.push({name: this.lessons[nextLesson]});
 			}
 			
 		},
 
 		startOver() {
-			this.store.commit('setMenuHeader', true);
+			this.$store.commit('setMenuHeader', true);
 			this.$router.push({name: this.startOverPathName});
 		}
 	}

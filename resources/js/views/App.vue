@@ -1,12 +1,12 @@
 <template>
 	<div>
-        <div class="hero-body" v-show="showHeader">
+        <div class="hero-body" v-show="showMenuHeader">
             <div class="container">
                 <h1 class="title">
                 IntranetMath
                 </h1>
                 <h2 class="subtitle">
-                A knock-off <a href="http://internetmath.net" target="_blank">internetmath.net</a>
+                As seen on <a href="http://internetmath.net" target="_blank">InternetMath.net</a>
                 </h2>
             </div>
         </div>
@@ -20,7 +20,7 @@
 	                   
                 	</router-link>
                 </li>
-                <li data-target="pane-2" id="2">
+               <!--  <li data-target="pane-2" id="2">
                     <a>
                         <span class="icon is-small"><i class="fas fa-chalkboard-teacher"></i></span>
                         <span>First Grade</span>
@@ -31,7 +31,7 @@
                         <span class="icon is-small"><i class="fas fa-chalkboard-teacher"></i></span>
                         <span>Second Grade</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="tab-content">
@@ -67,11 +67,12 @@
     </div>
 </template>
 <script>
+    import {mapState} from 'vuex'
     export default {
-        computed: {
-            showHeader() {
-                return this.store.state.showMenuHeader;
-            }
-        }
+        computed: 
+            mapState([
+                'showMenuHeader'
+                ])
+        
     }
 </script>

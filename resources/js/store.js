@@ -7,6 +7,7 @@ export default {
         'numbers-range',
         'how-many-balls',
         'count-by-tens',
+        'how-many-balls-by-tens'
       ]
     },
     grade: '',

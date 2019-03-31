@@ -11,8 +11,8 @@
 			<i class="fas fa-exclamation-triangle" style="color:red; font-size:2em;"></i>
 		</div>
 		<div class="columns is-multiline is-mobile answers">
-			<div class="column" v-for="(n, index) in 15">
-				<div class="answer center" @click="checkAnswer(index + 1)"><p class="is-size-4 has-text-weight-bold">{{index+1}}</p></div>
+			<div class="column" v-for="(n, index) in answers" :key="index">
+				<div class="answer center" @click="checkAnswer(n + 1)"><p class="is-size-4 has-text-weight-bold">{{n+1}}</p></div>
 			</div>
 		</div>
 		
@@ -20,13 +20,14 @@
 </template>
 
 <script>
+import {getRandomInt, shuffle} from '../../../helpers'
 export default {
   beforeRouteEnter (to, from, next) {
        next(vm => vm.generateRange());
    
 	},
   beforeRouteUpdate (to, from, next) {
-	    this.numberOfBalls = 0
+	    this.numberOfBalls = 0;
 	  
 	    this.generateRange();
 	    next();
@@ -38,8 +39,9 @@ export default {
       numberOfBalls: [],
       nextNumber: 1,
       upperNumber: 2,
-      lowerNumber: 1
-      }
+      lowerNumber: 1,
+      answers: shuffle([...Array(15).keys()])
+      };
   },
   methods: {
   	checkAnswer(n) {
@@ -58,22 +60,25 @@ export default {
   		}
   	},
   	generateRange() {
-  		let lowerIndex = Math.floor(Math.random() * 5);
-  		let upperIndex = Math.floor(Math.random() * 5);
+  		let lowerIndex = getRandomInt(5);
+  		let upperIndex = getRandomInt(5);
 
   		let lowerRange = Array.apply(null, {length: 6}).map(function(value, index){
-		  return index + 2;
+		  return index + 4;
 		});
 
   		let upperRange = Array.apply(null, {length: 6}).map(function(value, index){
-		  return index + 8;
+		  return index + 10;
 		});
 
 		this.lowerNumber = lowerRange[lowerIndex];
 		this.upperNumber = upperRange[upperIndex];
 		this.nextNumber = this.lowerNumber;
 		
-  	}
+  	},
+  	getAnswers() {
+  		return [...Array(16).keys()];
+  	},
   }
 
 }
@@ -81,7 +86,7 @@ export default {
 
 <style scoped>
 .problem-wrapper {
-	background: black url(~/../images/8e601a62-7502-447c-a97b-a44e6cab87ae.jpg) center / cover;
+	background: white url(~/../images/8e601a62-7502-447c-a97b-a44e6cab87ae.jpg) center / cover;
     padding-bottom: 5em;
 }
 

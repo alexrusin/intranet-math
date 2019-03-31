@@ -5,18 +5,18 @@
 		</div>
 		<div class="columns is-multiline is-mobile answers">
 			<div class="column">
-				<div class="answer center" @click="startLesson(5)">
-					<p class="is-size-4 has-text-weight-bold">5</p>
-				</div>
-			</div> 
-			<div class="column">
 				<div class="answer center" @click="startLesson(10)">
 					<p class="is-size-4 has-text-weight-bold">10</p>
 				</div>
-			</div>
+			</div> 
 			<div class="column">
 				<div class="answer center" @click="startLesson(20)">
 					<p class="is-size-4 has-text-weight-bold">20</p>
+				</div>
+			</div>
+			<div class="column">
+				<div class="answer center" @click="startLesson(30)">
+					<p class="is-size-4 has-text-weight-bold">30</p>
 				</div>
 			</div>
 		</div>

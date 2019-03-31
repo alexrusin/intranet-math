@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		
-		<div @click="checkAnswer">
+		<div @click="checkAnswer" class="answer-container">
 
 		<i class="far fa-check-circle" ></i>
 		</div>		
@@ -41,8 +41,8 @@ export default {
 
 	methods: {
 		generateAnswer() {
-			let randoInt = getRandomInt(9);
-			this.answer = (randoInt + 1) * 10;
+			let randomInt = getRandomInt(9);
+			this.answer = (randomInt + 1) * 10;
 		},
 
 		addBalls() {
@@ -71,7 +71,7 @@ export default {
 </script>
 <style scoped>
 .problem-wrapper {
-	background: black url(~/../images/96f41eb6-e9fb-4692-831b-3df9fa157de9.jpg) center / cover;
+	background: white url(~/../images/96f41eb6-e9fb-4692-831b-3df9fa157de9.jpg) center / cover;
     padding-bottom: 15em;
 }
 
@@ -80,8 +80,8 @@ export default {
 	flex-wrap: wrap;
 	padding: 2.5em;
     width: 90%;
-    height: 20em;
-    background: black url(~/../images/green_box.jpg) center / cover;
+    min-height: 20em;
+    background: white url(~/../images/green_box.jpg) center / cover;
 }
 
 .ball {
@@ -94,6 +94,10 @@ export default {
 	justify-content: center;
 	flex-direction: column;
 	flex: 0 0 auto;
+}
+
+.answer-container {
+	margin-top: 2em;
 }
 
 .fa-check-circle {

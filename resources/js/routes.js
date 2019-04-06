@@ -5,6 +5,7 @@ import HowManyBalls from './views/lessons/kindergarten/HowManyBalls'
 import NumbersRange from './views/lessons/kindergarten/NumbersRange'
 import CountByTens from './views/lessons/kindergarten/CountByTens'
 import HowManyBallsByTens from './views/lessons/kindergarten/HowManyBallsByTens'
+import CountApples from './views/lessons/kindergarten/CountApples'
 
 export default {
     mode: 'history',
@@ -37,6 +38,12 @@ export default {
             path: '/lessons/kindergarten/how-many-balls-by-tens',
             name: 'how-many-balls-by-tens',
             component: HowManyBallsByTens
+        },
+
+        {
+            path: '/lessons/kindergarten/count-apples',
+            name: 'count-apples',
+            component: CountApples
         },
 
 

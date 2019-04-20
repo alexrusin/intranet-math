@@ -6,6 +6,7 @@ import NumbersRange from './views/lessons/kindergarten/NumbersRange'
 import CountByTens from './views/lessons/kindergarten/CountByTens'
 import HowManyBallsByTens from './views/lessons/kindergarten/HowManyBallsByTens'
 import CountApples from './views/lessons/kindergarten/CountApples'
+import FillInTens from './views/lessons/kindergarten/FillInTens'
 
 export default {
     mode: 'history',
@@ -44,6 +45,12 @@ export default {
             path: '/lessons/kindergarten/count-apples',
             name: 'count-apples',
             component: CountApples
+        },
+
+        {
+            path: '/lessons/kindergarten/fill-in-tens',
+            name: 'fill-in-tens',
+            component: FillInTens
         },
 
 

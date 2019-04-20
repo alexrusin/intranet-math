@@ -8,7 +8,8 @@ export default {
         'how-many-balls',
         'count-by-tens',
         'how-many-balls-by-tens',
-        'count-apples'
+        'count-apples',
+        'fill-in-tens'
       ]
     },
     grade: '',

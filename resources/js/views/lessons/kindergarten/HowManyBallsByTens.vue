@@ -3,13 +3,13 @@
 		<p class="is-size-3 mt-2 has-text-weight-bold">How Many Balls?</p>
 		<div class="ball-container">
 			
-		<div class="ball" v-for="ball in numberOfBalls">
+		<div class="ball" v-for="ball in numberOfBalls" :key="ball">
 			<p class="is-size-4 has-text-weight-bold">10</p>
 		</div>
 			
 		</div>
 		<div class="columns is-multiline is-mobile answers">
-			<div class="column" v-for="(n, index) in 10">
+			<div class="column" v-for="(n, index) in 10" :key="index">
 				<div class="answer center" @click="checkAnswer(index + 1)"><p class="is-size-4 has-text-weight-bold">{{(index+1)*10}}</p></div>
 			</div>
 		</div>

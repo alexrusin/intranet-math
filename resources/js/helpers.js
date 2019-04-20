@@ -28,3 +28,11 @@ export function shuffle(array) {
 	return array;
 
 }
+
+export const objectHasNull = (target) => {
+    for (var member in target) {
+        if (target[member] == null)
+            return true;
+    }
+    return false;
+}

@@ -6,9 +6,10 @@
 					<div class="ball"><p v-text="number" class="is-size-4 has-text-weight-bold"></p></div>
 				</div>
 			</div>
-
-		<div v-if="error">
-			<i class="fas fa-exclamation-triangle" style="color:red; font-size:2em;"></i>
+		<div class="error">
+			<div v-if="error">
+				<i class="fas fa-exclamation-triangle" style="color:red; font-size:2em;"></i>
+			</div>
 		</div>
 		<div class="columns is-multiline is-mobile answers">
 			<div class="column" v-for="(n, index) in answers" :key="index">
@@ -113,6 +114,11 @@ export default {
 
 .answers {
 	width: 50%;
+}
+
+.error {
+   min-height: 3em;
+   margin-bottom: 2em;
 }
 
 

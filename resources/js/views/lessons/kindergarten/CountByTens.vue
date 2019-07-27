@@ -94,6 +94,7 @@ export default {
 	justify-content: center;
 	flex-direction: column;
 	flex: 0 0 auto;
+	cursor: pointer;
 }
 
 .answer-container {

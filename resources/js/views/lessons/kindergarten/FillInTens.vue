@@ -1,6 +1,6 @@
 <template>
 	<div class="problem-wrapper">
-		<p class="is-size-3 mt-2 has-text-weight-bold">Enter missing numbers in oragne boxes</p>
+		<p class="is-size-3 mt-2 has-text-weight-bold">Enter missing numbers in orange boxes</p>
 		<div class="numbers-container">
             <table class="table is-bordered">
                 <tbody>

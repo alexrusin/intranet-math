@@ -7,6 +7,7 @@ import CountByTens from './views/lessons/kindergarten/CountByTens'
 import HowManyBallsByTens from './views/lessons/kindergarten/HowManyBallsByTens'
 import CountApples from './views/lessons/kindergarten/CountApples'
 import FillInTens from './views/lessons/kindergarten/FillInTens'
+import AddSubtractThings from './views/lessons/kindergarten/AddSubtractThings'
 
 export default {
     mode: 'history',
@@ -51,6 +52,18 @@ export default {
             path: '/lessons/kindergarten/fill-in-tens',
             name: 'fill-in-tens',
             component: FillInTens
+        },
+
+        {
+            path: '/lessons/kindergarten/things?action=Add=Apples',
+            name: 'add-things',
+            component: AddSubtractThings
+        },
+
+        {
+            path: '/lessons/kindergarten/things?action=Subtract=Apples',
+            name: 'subtract-things',
+            component: AddSubtractThings
         },
 
 
